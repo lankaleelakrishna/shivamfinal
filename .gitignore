@@ -1,0 +1,12 @@
+node_modules/
+.next/
+out/
+build/
+*.tsbuildinfo
+next-env.d.ts
+.env*.local
+.DS_Store
+npm-debug.log*
+
+# Plain .env files can hold real secrets (e.g. GMAIL_APP_PASSWORD)
+.env

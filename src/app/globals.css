@@ -1,0 +1,218 @@
+/*
+ * Sri Shivam Infotech: global design tokens and layout primitives.
+ * Ported 1:1 from the HTML reference. Component styles live in *.module.css
+ * next to each component; only tokens, base element styles and the shared
+ * layout primitives (.wrap, .band, .alt, .eyebrow, .ic) live here.
+ */
+
+:root {
+  --bg: #f4f6f9;
+  --surface: #ffffff;
+  --surface-2: #e9eef4;
+  --ink: #0e2236;
+  --muted: #4d6076;
+  --line: #d6dee8;
+  --brand: #14385c;
+  --accent: #e4780f;
+  --accent-soft: rgba(228, 120, 15, 0.12);
+  --on-accent: #1b1100;
+  --link: #14509a;
+  --header-bg: rgba(255, 255, 255, 0.94);
+  --shadow: 0 1px 2px rgba(14, 34, 54, 0.06), 0 10px 28px rgba(14, 34, 54, 0.08);
+  --hero-bg: #0e2a47;
+  --hero-fg: #f2f6fa;
+  --hero-muted: #b4c4d6;
+  --hero-line: #2c4967;
+  --hero-accent: #f5a04a;
+  --ok: #0f6b3e;
+  --ok-bg: #ddf1e5;
+  --warn: #8a5200;
+  --warn-bg: #fbebd0;
+  --info: #1f4f8a;
+  --info-bg: #dee9f7;
+
+  /* next/font injects --font-bricolage and --font-manrope on <html>. */
+  --font-display: var(--font-bricolage, "Bricolage Grotesque"), "Segoe UI", system-ui, sans-serif;
+  --font-body: var(--font-manrope, "Manrope"), "Segoe UI", system-ui, -apple-system, sans-serif;
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0a1522;
+    --surface: #101f31;
+    --surface-2: #162a41;
+    --ink: #e8eff6;
+    --muted: #9fb1c4;
+    --line: #223850;
+    --brand: #8db6e2;
+    --accent: #f29a3a;
+    --accent-soft: rgba(242, 154, 58, 0.16);
+    --on-accent: #1b1100;
+    --link: #8db6e2;
+    --header-bg: rgba(16, 31, 49, 0.94);
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 10px 28px rgba(0, 0, 0, 0.35);
+    --hero-bg: #0f2740;
+    --ok: #6fd0a0;
+    --ok-bg: #12382a;
+    --warn: #f2b866;
+    --warn-bg: #3a2a10;
+    --info: #8db6e2;
+    --info-bg: #16304d;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #0a1522;
+  --surface: #101f31;
+  --surface-2: #162a41;
+  --ink: #e8eff6;
+  --muted: #9fb1c4;
+  --line: #223850;
+  --brand: #8db6e2;
+  --accent: #f29a3a;
+  --accent-soft: rgba(242, 154, 58, 0.16);
+  --on-accent: #1b1100;
+  --link: #8db6e2;
+  --header-bg: rgba(16, 31, 49, 0.94);
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 10px 28px rgba(0, 0, 0, 0.35);
+  --hero-bg: #0f2740;
+  --ok: #6fd0a0;
+  --ok-bg: #12382a;
+  --warn: #f2b866;
+  --warn-bg: #3a2a10;
+  --info: #8db6e2;
+  --info-bg: #16304d;
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: env(safe-area-inset-top, 0px);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: clip;
+}
+
+/* Paints the iOS status-bar area when the page is installed / full-bleed. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px);
+  background: var(--surface);
+  z-index: 30;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  line-height: 1.1;
+  margin: 0;
+  text-wrap: balance;
+  letter-spacing: -0.015em;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: var(--link);
+}
+
+img {
+  max-width: 100%;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ---------- Layout primitives shared by every section ---------- */
+
+.ic {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex: none;
+}
+
+.wrap {
+  max-width: 1160px;
+  margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+.band {
+  padding-block: 88px;
+}
+
+.alt {
+  background: var(--surface);
+  border-block: 1px solid var(--line);
+}
+
+.eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+section[id] {
+  scroll-margin-top: 80px;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 880px) {
+  .band {
+    padding-block: 64px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

@@ -1,0 +1,33 @@
+.tile {
+  display: grid;
+  gap: 12px;
+  justify-items: start;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  font-weight: 700;
+  font-size: 15px;
+  transition: border-color 0.18s, color 0.18s;
+}
+
+.tile :global(.ic) {
+  width: 26px;
+  height: 26px;
+  color: var(--brand);
+  transition: color 0.18s;
+}
+
+.tile:hover {
+  border-color: var(--accent);
+}
+
+.tile:hover :global(.ic) {
+  color: var(--accent);
+}
+
+@media (max-width: 560px) {
+  .tile {
+    padding: 16px;
+  }
+}

@@ -1,0 +1,29 @@
+.head {
+  display: grid;
+  gap: 12px;
+  max-width: 700px;
+  margin-bottom: 48px;
+}
+
+/* The reference's `.sec-head p` rule also styles the eyebrow (17px, muted). Kept for fidelity. */
+.head :global(.eyebrow) {
+  font-size: 17px;
+  color: var(--muted);
+}
+
+.head h2 {
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+}
+
+.intro {
+  color: var(--muted);
+  font-size: 17px;
+}
+
+.dark h2 {
+  color: #f4f8ff;
+}
+
+.dark .intro {
+  color: #a9bdd3;
+}

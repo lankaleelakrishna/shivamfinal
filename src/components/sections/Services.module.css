@@ -1,0 +1,41 @@
+.group + .group {
+  margin-top: 64px;
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: 8px 24px;
+  margin-bottom: 24px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.head h3 {
+  font-size: 1.7rem;
+}
+
+.head p {
+  color: var(--muted);
+  max-width: 440px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+@media (max-width: 980px) {
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 620px) {
+  .cards {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
