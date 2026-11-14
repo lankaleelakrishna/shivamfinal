@@ -43,6 +43,19 @@
   max-width: 320px;
 }
 
+.lockup {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.mark {
+  width: 64px;
+  height: 64px;
+  flex: none;
+  object-fit: contain;
+}
+
 .brand strong {
   font: 700 18px/1.2 var(--font-display);
   color: var(--hero-fg);

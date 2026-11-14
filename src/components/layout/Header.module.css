@@ -29,26 +29,8 @@
 .mark {
   width: 38px;
   height: 38px;
-  border-radius: 10px;
-  background: var(--brand);
-  color: var(--surface);
-  display: grid;
-  place-items: center;
-  font: 700 15px/1 var(--font-display);
   flex: none;
-  position: relative;
-}
-
-.mark::after {
-  content: "";
-  position: absolute;
-  right: -3px;
-  bottom: -3px;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--accent);
-  border: 2px solid var(--surface);
+  object-fit: contain;
 }
 
 .name {

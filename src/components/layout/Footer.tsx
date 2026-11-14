@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { COMPANY, FOOTER_CONTACT, FOOTER_EXPLORE } from "@/lib/constants";
 import styles from "./Footer.module.css";
 
@@ -6,7 +7,10 @@ export function Footer() {
     <footer className={styles.footer}>
       <div className={`wrap ${styles.inner}`}>
         <div className={styles.brand}>
-          <strong>{COMPANY.legalName}</strong>
+          <div className={styles.lockup}>
+            <Image src="/brand/logo-mark.png" alt="" width={64} height={64} className={styles.mark} />
+            <strong>{COMPANY.legalName}</strong>
+          </div>
           <span>{COMPANY.footerBlurb}</span>
         </div>
         <nav aria-label="Explore">

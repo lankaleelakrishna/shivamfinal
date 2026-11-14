@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { Icon } from "@/components/icons/Icon";
 import { PickLink } from "@/components/ui/PickLink";
@@ -33,9 +34,7 @@ export function Header() {
     <header className={styles.header}>
       <div className={`wrap ${styles.inner}`}>
         <a className={styles.brand} href="#top" aria-label={`${COMPANY.legalName.replace(" Pvt. Ltd.", "")}, home`}>
-          <span className={styles.mark} aria-hidden="true">
-            {COMPANY.monogram}
-          </span>
+          <Image className={styles.mark} src="/brand/logo-mark.png" alt="" width={38} height={38} priority />
           <span className={styles.name}>
             {COMPANY.shortName}
             <small>{COMPANY.tagline}</small>
