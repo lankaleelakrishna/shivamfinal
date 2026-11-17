@@ -10,8 +10,15 @@ export const COMPANY = {
 } as const;
 
 export const ADDRESS = {
-  lines: ["Sri Shivam Infotech Solutions Pvt. Ltd.", "3rd Floor, Geetanjali Building", "S.R. Nagar, Hyderabad"],
-  mapsUrl: "https://www.google.com/maps/search/?api=1&query=Geetanjali+Building+S.R.+Nagar+Hyderabad",
+  lines: [
+    "Sri Shivam Infotech Solutions Pvt. Ltd.",
+    "3rd Floor, Geetanjali, #44/A",
+    "Opp. Police Station, Sanjeeva Reddy Nagar",
+    "Hyderabad, Telangana 500038",
+  ],
+  mapsUrl:
+    "https://www.google.com/maps/search/?api=1&query=" +
+    encodeURIComponent("Sri Shivam Infotech Solutions, 3rd Floor, Geetanjali, #44/A, Opp. Police Station, Sanjeeva Reddy Nagar, Hyderabad, Telangana 500038"),
 } as const;
 
 export interface NavLink {
