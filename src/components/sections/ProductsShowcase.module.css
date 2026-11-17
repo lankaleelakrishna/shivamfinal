@@ -248,6 +248,12 @@
   color: #8db6e2;
 }
 
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+}
+
 .pill {
   font-size: 12px;
   font-weight: 700;

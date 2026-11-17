@@ -13,10 +13,6 @@ export function Hero() {
         <div className={styles.band}>
           <div className={styles.grid}>
             <div>
-              <p className={`eyebrow ${styles.eyebrow}`}>
-                <Icon name="pin" />
-                {HERO.eyebrow}
-              </p>
               <h1 className={styles.title}>
                 People who <em>fit</em>. Apps that <em>ship</em>.
               </h1>

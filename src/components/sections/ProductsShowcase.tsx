@@ -192,10 +192,14 @@ export function ProductsShowcase() {
                   ))}
                 </ul>
                 <p className={styles.tech}>{p.tech}</p>
-                {p.link ? (
-                  <a href={p.link.href} target="_blank" rel="noopener noreferrer">
-                    {p.link.label}
-                  </a>
+                {p.link || p.links ? (
+                  <div className={styles.links}>
+                    {[...(p.link ? [p.link] : []), ...(p.links ?? [])].map((l) => (
+                      <a key={l.href} href={l.href} target="_blank" rel="noopener noreferrer">
+                        {l.label}
+                      </a>
+                    ))}
+                  </div>
                 ) : null}
               </article>
             ))}

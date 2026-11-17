@@ -12,11 +12,38 @@ export interface Product {
   features: [string, string, string];
   tech: string;
   link?: { href: string; label: string };
+  /** Several store links for products that ship more than one app. Shown after `link`. */
+  links?: { href: string; label: string }[];
   /** Base scale of the 3D model on the stage (from the reference). */
   modelScale: number;
 }
 
 export const PRODUCTS: Product[] = [
+  {
+    id: "hirevaani",
+    name: "HireVaani",
+    color: 0xf5a04a,
+    status: { label: "On Google Play", tone: "ok" },
+    summary: "A voice-first hiring app for blue-collar workers. Workers speak instead of typing.",
+    features: ["Voice-based profiles", "Short voice interviews", "Verified skill badges for employers"],
+    tech: "Android · Voice AI",
+    links: [
+      { href: "https://play.google.com/store/apps/details?id=com.hirevaani.ai.worker&hl=en_IN", label: "Worker app on Google Play" },
+      { href: "https://play.google.com/store/apps/details?id=com.hirevaani.ai.employer&hl=en_IN", label: "Employer app on Google Play" },
+    ],
+    modelScale: 0.95,
+  },
+  {
+    id: "parknow",
+    name: "ParkNow",
+    color: 0x2bd67b,
+    status: { label: "On Google Play", tone: "ok" },
+    summary: "Find parking nearby and reserve a space before you arrive.",
+    features: ["Nearby spots with rates and details", "Reserve a space for your vehicle", "Bookings and past trips in one place"],
+    tech: "Android · Web admin dashboard",
+    link: { href: "https://play.google.com/store/apps/details?id=com.parknow.mobile", label: "View on Google Play" },
+    modelScale: 0.9,
+  },
   {
     id: "hirenova",
     name: "HireNova AI",
@@ -27,16 +54,6 @@ export const PRODUCTS: Product[] = [
     tech: "Web · AI resume rewriting",
     link: { href: "https://gethirenova.com", label: "Visit gethirenova.com" },
     modelScale: 1,
-  },
-  {
-    id: "hirevaani",
-    name: "HireVaani",
-    color: 0xf5a04a,
-    status: { label: "On Google Play", tone: "ok" },
-    summary: "A voice-first hiring app for blue-collar workers. Workers speak instead of typing.",
-    features: ["Voice-based profiles", "Short voice interviews", "Verified skill badges for employers"],
-    tech: "Android · Voice AI",
-    modelScale: 0.95,
   },
   {
     id: "vivahlive",
@@ -57,17 +74,6 @@ export const PRODUCTS: Product[] = [
     features: ["Private groups of 2 to 10", "Posts disappear after 24 hours", "Telugu, Hindi, Tamil, Kannada, English"],
     tech: "React · Multilingual voice input",
     modelScale: 1,
-  },
-  {
-    id: "parknow",
-    name: "ParkNow",
-    color: 0x2bd67b,
-    status: { label: "On Google Play", tone: "ok" },
-    summary: "Find parking nearby and reserve a space before you arrive.",
-    features: ["Nearby spots with rates and details", "Reserve a space for your vehicle", "Bookings and past trips in one place"],
-    tech: "Android · Web admin dashboard",
-    link: { href: "https://play.google.com/store/apps/details?id=com.parknow.mobile", label: "View on Google Play" },
-    modelScale: 0.9,
   },
 ];
 
