@@ -58,6 +58,8 @@ export const NAV_ITEMS: NavItem[] = [
       { href: "/services#ai-solutions", label: "AI-Powered Solutions" },
       { href: "/services#ui-ux-design", label: "UI/UX Design" },
       { href: "/services#digital-product-development", label: "Digital Product Development" },
+      { href: "/services#website-development", label: "Website Development" },
+      { href: "/services#digital-marketing", label: "Digital Marketing" },
     ],
   },
   {

@@ -18,7 +18,7 @@ export default function ServicesPage() {
       <PageHero
         eyebrow="Services"
         title="Software and product services, delivered by one team"
-        lede="Six services across web, mobile, AI and design. The people who scope your project are the people who build it."
+        lede="Eight services across web, mobile, AI, design and digital marketing. The people who scope your project are the people who build it."
         art="code"
       />
       <section className="band" aria-label="Our services">

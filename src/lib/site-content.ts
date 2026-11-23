@@ -102,6 +102,32 @@ export const SERVICES: ContentBlock[] = [
       "Ongoing improvements",
     ],
   },
+  {
+    id: "website-development",
+    art: "code",
+    title: "Website Development",
+    summary:
+      "Business websites that explain what you do clearly, load quickly on any device and make it easy for visitors to get in touch.",
+    points: [
+      "Company and corporate websites",
+      "Mobile-friendly, fast-loading pages",
+      "Contact forms and enquiry tools",
+      "Pages you can update without a developer",
+    ],
+  },
+  {
+    id: "digital-marketing",
+    art: "network",
+    title: "Digital Marketing",
+    summary:
+      "Helping businesses get found and chosen online, with search, social and campaign work planned around clear goals.",
+    points: [
+      "Search engine optimisation (SEO)",
+      "Social media and campaign planning",
+      "Performance tracking and reporting",
+      "Landing page and website improvements",
+    ],
+  },
 ];
 
 export const INDUSTRIES: ContentBlock[] = [
