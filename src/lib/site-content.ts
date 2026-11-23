@@ -105,6 +105,7 @@ export const SERVICES: ContentBlock[] = [
   {
     id: "website-development",
     art: "code",
+    image: "/images/services/website-development.webp",
     title: "Website Development",
     summary:
       "Business websites that explain what you do clearly, load quickly on any device and make it easy for visitors to get in touch.",

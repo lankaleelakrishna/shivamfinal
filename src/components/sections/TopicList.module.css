@@ -20,12 +20,16 @@
   align-items: center;
 }
 
-.image {
-  display: block;
-  width: 100%;
-  height: auto;
+.photo {
+  position: relative;
+  aspect-ratio: 497 / 461;
   border-radius: 18px;
-  object-fit: cover;
+  overflow: hidden;
+  background: transparent;
+}
+
+.image {
+  object-fit: contain;
 }
 
 .reverse .media {

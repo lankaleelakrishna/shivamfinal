@@ -29,14 +29,15 @@ export function TopicList({ items, ctaLabel, ctaHref, ctaPick }: TopicListProps)
           <div className={styles.wrap}>
             <div className={styles.media}>
               {item.image ? (
-                <Image
-                  className={styles.image}
-                  src={item.image}
-                  alt={`${item.title} visual`}
-                  width={497}
-                  height={461}
-                  sizes="(max-width: 880px) 100vw, 50vw"
-                />
+                <div className={styles.photo}>
+                  <Image
+                    className={styles.image}
+                    src={item.image}
+                    alt={`${item.title} visual`}
+                    fill
+                    sizes="(max-width: 880px) 100vw, 50vw"
+                  />
+                </div>
               ) : (
                 <Artwork kind={item.art} label={`Illustration for ${item.title}`} />
               )}
