@@ -3,12 +3,13 @@ import { ServiceCard } from "@/components/ui/ServiceCard";
 import { SERVICE_GROUPS } from "@/lib/services";
 import styles from "./Services.module.css";
 
-export function Services() {
+export function Services({ headingAs }: { headingAs?: "h1" | "h2" }) {
   return (
     <section id="services" className="band alt" aria-labelledby="services-title">
       <div className="wrap">
         <SectionHeading
           id="services-title"
+          as={headingAs}
           eyebrow="Services"
           title="Two desks, one point of contact"
           intro="Hiring and software sit in the same office, so a product team can be staffed by the same people who build your app."

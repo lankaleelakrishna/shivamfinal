@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import type { ReactNode } from "react";
 import { useFormTab } from "@/components/providers/FormTabProvider";
 import type { FormTabId } from "@/lib/forms";
@@ -13,12 +14,12 @@ interface PickLinkProps {
   children: ReactNode;
 }
 
-/** A CTA that scrolls to the forms and opens the matching tab (reference: data-pick). */
+/** A CTA that opens the forms on the home page and selects the matching tab (reference: data-pick). */
 export function PickLink({ pick, variant = "primary", compact, className, children }: PickLinkProps) {
   const { setTab } = useFormTab();
   return (
-    <a href="#hire" className={buttonClass(variant, compact, className)} onClick={() => setTab(pick)}>
+    <Link href="/#hire" className={buttonClass(variant, compact, className)} onClick={() => setTab(pick)}>
       {children}
-    </a>
+    </Link>
   );
 }

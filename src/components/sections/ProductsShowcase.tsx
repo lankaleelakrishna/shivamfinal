@@ -23,7 +23,7 @@ const ProductScene = dynamic(() => import("@/components/three/ProductScene"), { 
 
 type GlState = "pending" | "ready" | "unavailable";
 
-export function ProductsShowcase() {
+export function ProductsShowcase({ headingAs }: { headingAs?: "h1" | "h2" }) {
   const [active, setActive] = useState<ProductId>("hirenova");
   const supported = useWebGLSupport();
   const [status, setGl] = useState<GlState>("pending");
@@ -87,6 +87,7 @@ export function ProductsShowcase() {
       <div className="wrap">
         <SectionHeading
           id="work-title"
+          as={headingAs}
           onDark
           eyebrow="Our products"
           title="Five products, built in-house"

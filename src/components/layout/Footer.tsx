@@ -1,4 +1,6 @@
 import Image from "next/image";
+import Link from "next/link";
+import { FormTabLink } from "@/components/ui/FormTabLink";
 import { COMPANY, FOOTER_CONTACT, FOOTER_EXPLORE } from "@/lib/constants";
 import styles from "./Footer.module.css";
 
@@ -18,7 +20,7 @@ export function Footer() {
           <ul>
             {FOOTER_EXPLORE.map((l) => (
               <li key={l.label}>
-                <a href={l.href}>{l.label}</a>
+                <Link href={l.href}>{l.label}</Link>
               </li>
             ))}
           </ul>
@@ -28,7 +30,13 @@ export function Footer() {
           <ul>
             {FOOTER_CONTACT.map((l) => (
               <li key={l.label}>
-                <a href={l.href}>{l.label}</a>
+                {l.pick ? (
+                  <FormTabLink href={l.href} pick={l.pick}>
+                    {l.label}
+                  </FormTabLink>
+                ) : (
+                  <Link href={l.href}>{l.label}</Link>
+                )}
               </li>
             ))}
           </ul>

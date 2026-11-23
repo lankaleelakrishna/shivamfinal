@@ -45,23 +45,122 @@
   letter-spacing: 0.03em;
 }
 
+/* Desktop navigation */
 .nav {
-  display: flex;
-  gap: 2px;
+  display: block;
 }
 
+.list {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  position: relative;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+}
+
+.link,
 .nav a {
-  padding: 9px 14px;
+  padding: 9px 12px;
   border-radius: 8px;
   color: var(--ink);
   text-decoration: none;
   font-weight: 600;
   font-size: 14px;
   white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
 }
 
+.link:hover,
 .nav a:hover {
   background: var(--surface-2);
+}
+
+.caret {
+  width: 26px;
+  height: 26px;
+  margin-left: -6px;
+  border: 0;
+  border-radius: 6px;
+  background: none;
+  color: var(--muted);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.2s, color 0.15s;
+}
+
+.caret :global(.ic) {
+  width: 14px;
+  height: 14px;
+}
+
+.caret:hover {
+  color: var(--ink);
+}
+
+.caretOpen {
+  transform: rotate(180deg);
+  color: var(--accent);
+}
+
+/* Dropdown panel */
+.sub {
+  display: none;
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  min-width: 270px;
+  margin: 0;
+  padding: 8px;
+  list-style: none;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  z-index: 30;
+}
+
+.subOpen {
+  display: grid;
+  animation: subIn 0.18s ease-out;
+}
+
+.sub a {
+  display: block;
+  padding: 9px 12px;
+  border-radius: 8px;
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.sub a:hover {
+  background: var(--surface-2);
+  color: var(--accent);
+}
+
+@keyframes subIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .actions {
@@ -83,7 +182,8 @@
   padding: 0;
 }
 
-@media (max-width: 880px) {
+/* Tablet and phone: the nav becomes a drawer with accordion groups. */
+@media (max-width: 1080px) {
   .menuBtn {
     display: grid;
   }
@@ -94,30 +194,78 @@
     top: 100%;
     left: 0;
     right: 0;
-    flex-direction: column;
-    gap: 0;
+    max-height: calc(100vh - 64px);
+    overflow-y: auto;
     background: var(--surface);
     border-bottom: 1px solid var(--line);
-    padding: 8px max(16px, env(safe-area-inset-right, 0px)) 12px max(16px, env(safe-area-inset-left, 0px));
+    padding: 8px max(16px, env(safe-area-inset-right, 0px)) 16px max(16px, env(safe-area-inset-left, 0px));
     box-shadow: var(--shadow);
   }
 
   .nav.open {
-    display: flex;
+    display: block;
   }
 
-  .nav a {
-    padding: 14px 8px;
+  .list {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .item {
     border-bottom: 1px solid var(--line);
+  }
+
+  .item:last-child {
+    border-bottom: 0;
+  }
+
+  .row {
+    justify-content: space-between;
+  }
+
+  .link,
+  .nav a {
+    flex: 1;
+    padding: 14px 8px;
     border-radius: 0;
     font-size: 16px;
   }
 
-  .nav a:last-child {
-    border-bottom: 0;
+  .caret {
+    width: 40px;
+    height: 40px;
+    margin-left: 0;
+  }
+
+  .sub {
+    position: static;
+    min-width: 0;
+    margin: 0 0 10px;
+    padding: 0 0 0 12px;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    background: none;
+  }
+
+  .sub a {
+    padding: 10px 8px;
+    font-size: 15px;
+    font-weight: 500;
   }
 
   .name small {
     display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .subOpen {
+    animation: none;
+  }
+
+  .caret {
+    transition: none;
   }
 }

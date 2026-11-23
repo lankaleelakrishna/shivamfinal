@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, type FormEvent, type KeyboardEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent, type KeyboardEvent } from "react";
 import { Icon } from "@/components/icons/Icon";
 import { useFormTab } from "@/components/providers/FormTabProvider";
 import { Button } from "@/components/ui/Button";
@@ -9,9 +9,11 @@ import {
   FORM_MESSAGES,
   FORM_SIDE,
   FORM_TABS,
+  HOME_FORM_IDS,
   filesMatchAccept,
   submitEnquiry,
   type FormField,
+  type FormSide,
   type FormTabId,
 } from "@/lib/forms";
 import styles from "./ContactForms.module.css";
@@ -171,12 +173,29 @@ function EnquiryForm({ id, hidden }: { id: FormTabId; hidden: boolean }) {
   );
 }
 
-export function ContactForms() {
+interface ContactFormsProps {
+  /** Which enquiry types to offer, in order. Defaults to the home page set. */
+  tabIds?: FormTabId[];
+  /** Copy shown beside the form. */
+  side?: FormSide;
+  sectionId?: string;
+}
+
+export function ContactForms({ tabIds = HOME_FORM_IDS, side = FORM_SIDE, sectionId = "hire" }: ContactFormsProps) {
   const { tab, setTab } = useFormTab();
   const tabRefs = useRef<Partial<Record<FormTabId, HTMLButtonElement | null>>>({});
+  const tabs = FORM_TABS.filter((t) => tabIds.includes(t.id));
+  // The shared tab state may hold a type this page does not offer, so fall back to the first one.
+  const active = tabs.some((t) => t.id === tab) ? tab : tabs[0].id;
+
+  // Links such as /contact#hirevaani open the matching enquiry type.
+  useEffect(() => {
+    const fromHash = window.location.hash.slice(1) as FormTabId;
+    if (tabIds.includes(fromHash)) setTab(fromHash);
+  }, [tabIds, setTab]);
 
   const onKey = (e: KeyboardEvent<HTMLButtonElement>, idx: number) => {
-    const n = FORM_TABS.length;
+    const n = tabs.length;
     let next: number | null = null;
     if (e.key === "ArrowRight") next = (idx + 1) % n;
     if (e.key === "ArrowLeft") next = (idx - 1 + n) % n;
@@ -184,21 +203,21 @@ export function ContactForms() {
     if (e.key === "End") next = n - 1;
     if (next === null) return;
     e.preventDefault();
-    const id = FORM_TABS[next].id;
+    const id = tabs[next].id;
     setTab(id);
     tabRefs.current[id]?.focus();
   };
 
   return (
-    <section id="hire" className="band alt" aria-labelledby="hire-title">
+    <section id={sectionId} className="band alt" aria-labelledby="hire-title">
       <div className="wrap">
         <div className={styles.shell}>
           <div className={styles.side}>
-            <p className="eyebrow">{FORM_SIDE.eyebrow}</p>
-            <h2 id="hire-title">{FORM_SIDE.title}</h2>
-            <p className={styles.sideBody}>{FORM_SIDE.body}</p>
+            <p className="eyebrow">{side.eyebrow}</p>
+            <h2 id="hire-title">{side.title}</h2>
+            <p className={styles.sideBody}>{side.body}</p>
             <ul className={styles.tick}>
-              {FORM_SIDE.ticks.map((t) => (
+              {side.ticks.map((t) => (
                 <li key={t.text}>
                   <span className={styles.icBox}>
                     <Icon name={t.icon} />
@@ -211,7 +230,7 @@ export function ContactForms() {
 
           <div className={styles.card}>
             <div className={styles.tabs} role="tablist" aria-label="Request type">
-              {FORM_TABS.map((t, idx) => (
+              {tabs.map((t, idx) => (
                 <button
                   key={t.id}
                   ref={(el) => {
@@ -220,9 +239,9 @@ export function ContactForms() {
                   type="button"
                   role="tab"
                   id={`tab-${t.id}`}
-                  aria-selected={tab === t.id}
+                  aria-selected={active === t.id}
                   aria-controls={`panel-${t.id}`}
-                  tabIndex={tab === t.id ? 0 : -1}
+                  tabIndex={active === t.id ? 0 : -1}
                   onClick={() => setTab(t.id)}
                   onKeyDown={(e) => onKey(e, idx)}
                 >
@@ -230,8 +249,8 @@ export function ContactForms() {
                 </button>
               ))}
             </div>
-            {FORM_TABS.map((t) => (
-              <EnquiryForm key={t.id} id={t.id} hidden={tab !== t.id} />
+            {tabs.map((t) => (
+              <EnquiryForm key={t.id} id={t.id} hidden={active !== t.id} />
             ))}
           </div>
         </div>

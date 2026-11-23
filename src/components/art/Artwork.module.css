@@ -1,0 +1,21 @@
+.art {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+  transition: transform 0.4s ease;
+}
+
+.art:hover {
+  transform: scale(1.015);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .art {
+    transition: none;
+  }
+
+  .art:hover {
+    transform: none;
+  }
+}

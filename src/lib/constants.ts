@@ -1,4 +1,5 @@
 import type { IconName } from "@/components/icons/Icon";
+import type { FormTabId } from "@/lib/forms";
 
 export const COMPANY = {
   shortName: "Sri Shivam Infotech",
@@ -22,25 +23,102 @@ export const ADDRESS = {
 } as const;
 
 export interface NavLink {
-  href: `#${string}`;
+  href: string;
   label: string;
+  /** Contact enquiry type to select when the link is followed. */
+  form?: FormTabId;
 }
 
-export const NAV_LINKS: NavLink[] = [
-  { href: "#services", label: "Services" },
-  { href: "#process", label: "How we work" },
-  { href: "#industries", label: "Industries" },
-  { href: "#work", label: "Our products" },
-  { href: "#contact", label: "Contact" },
+export interface NavItem extends NavLink {
+  /** Optional dropdown links. The top-level link still goes to `href`. */
+  children?: NavLink[];
+}
+
+/** Main navigation, in order. Gallery is intentionally not part of the site. */
+export const NAV_ITEMS: NavItem[] = [
+  { href: "/", label: "Home" },
+  {
+    href: "/about",
+    label: "About Us",
+    children: [
+      { href: "/about#company", label: "Company introduction" },
+      { href: "/about#vision", label: "Vision and mission" },
+      { href: "/about#technology", label: "Our technology approach" },
+      { href: "/about#hirevaani", label: "The HireVaani story" },
+    ],
+  },
+  {
+    href: "/services",
+    label: "Services",
+    children: [
+      { href: "/services#web-applications", label: "Web Application Development" },
+      { href: "/services#mobile-applications", label: "Mobile Application Development" },
+      { href: "/services#custom-software", label: "Custom Software Development" },
+      { href: "/services#ai-solutions", label: "AI-Powered Solutions" },
+      { href: "/services#ui-ux-design", label: "UI/UX Design" },
+      { href: "/services#digital-product-development", label: "Digital Product Development" },
+    ],
+  },
+  {
+    href: "/industries",
+    label: "Industries",
+    children: [
+      { href: "/industries#recruitment-staffing", label: "Recruitment and Staffing" },
+      { href: "/industries#hr-workforce", label: "Human Resources and Workforce" },
+      { href: "/industries#education-skills", label: "Education and Skill Development" },
+      { href: "/industries#business-enterprise", label: "Business and Enterprise" },
+    ],
+  },
+  {
+    href: "/clients",
+    label: "Clients",
+    children: [
+      { href: "/clients#projects", label: "Project showcase" },
+      { href: "/clients#partners", label: "Partnerships" },
+      { href: "/portfolio", label: "Our products" },
+    ],
+  },
+  {
+    href: "/blogs",
+    label: "Blogs",
+    children: [
+      { href: "/blogs#recruitment-technology", label: "Recruitment Technology" },
+      { href: "/blogs#artificial-intelligence", label: "Artificial Intelligence" },
+      { href: "/blogs#hiring-hr-trends", label: "Hiring and HR Trends" },
+      { href: "/blogs#software-development", label: "Software Development" },
+      { href: "/blogs#business-technology", label: "Business Technology" },
+    ],
+  },
+  {
+    href: "/contact",
+    label: "Contact Us",
+    children: [
+      { href: "/contact#enquiry", label: "Business services enquiry", form: "business" },
+      { href: "/contact#enquiry", label: "HireVaani enquiry", form: "hirevaani" },
+    ],
+  },
 ];
 
-export const FOOTER_EXPLORE: NavLink[] = NAV_LINKS.filter((l) => l.href !== "#contact");
+/** Footer explore column: the main pages, without Home. */
+export const FOOTER_EXPLORE: NavLink[] = [
+  { href: "/about", label: "About Us" },
+  { href: "/services", label: "Services" },
+  { href: "/industries", label: "Industries" },
+  { href: "/clients", label: "Clients" },
+  { href: "/blogs", label: "Blogs" },
+  { href: "/contact", label: "Contact Us" },
+];
 
-export const FOOTER_CONTACT: NavLink[] = [
-  { href: "#hire", label: "Hire talent" },
-  { href: "#hire", label: "Get an app quote" },
-  { href: "#hire", label: "Looking for a job" },
-  { href: "#contact", label: "Office address" },
+export interface FooterLink extends NavLink {
+  /** Form tab to open on the home page, when the link is a hiring or quote CTA. */
+  pick?: FormTabId;
+}
+
+export const FOOTER_CONTACT: FooterLink[] = [
+  { href: "/#hire", label: "Hire talent", pick: "hire" },
+  { href: "/#hire", label: "Get an app quote", pick: "app" },
+  { href: "/#hire", label: "Looking for a job", pick: "job" },
+  { href: "/#contact", label: "Office address" },
 ];
 
 export const HERO = {

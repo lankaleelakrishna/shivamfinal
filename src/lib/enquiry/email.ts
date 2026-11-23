@@ -11,12 +11,16 @@ const SUBJECTS: Record<FormTabId, string> = {
   hire: "New Hire Talent Enquiry – Shivam Technologies",
   app: "New App Development Quote Request – Shivam Technologies",
   job: "New Job Seeker Enquiry – Shivam Technologies",
+  business: "New Business Services Enquiry – Sri Shivam Infotech",
+  hirevaani: "New HireVaani Enquiry – Sri Shivam Infotech",
 };
 
 const CATEGORIES: Record<FormTabId, string> = {
   hire: "Hire Talent Enquiry",
   app: "App Development Quote Request",
   job: "Job Seeker Enquiry",
+  business: "Business Services Enquiry",
+  hirevaani: "HireVaani Enquiry",
 };
 
 export interface EnquiryConfig {

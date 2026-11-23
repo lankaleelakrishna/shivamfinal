@@ -196,6 +196,11 @@
   border-color: #f5a04a;
 }
 
+/* The selected tab is orange, so ring the dot in dark to keep it visible on any product colour. */
+.pick[aria-selected="true"] i {
+  box-shadow: 0 0 0 2px #1b1100;
+}
+
 .info {
   display: grid;
   gap: 14px;

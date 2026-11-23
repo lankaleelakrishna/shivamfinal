@@ -1,0 +1,31 @@
+.section {
+  text-align: center;
+}
+
+.inner h2 {
+  margin: 0 0 12px;
+}
+
+.inner p {
+  margin: 0 auto 24px;
+  max-width: 560px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* The ghost button is styled for the dark hero. On this light band it needs dark text and a dark border. */
+.ghostOnLight {
+  background: var(--surface);
+  color: var(--ink);
+  border-color: var(--ink);
+}
+
+.ghostOnLight:hover {
+  background: var(--surface-2);
+  border-color: var(--ink);
+}

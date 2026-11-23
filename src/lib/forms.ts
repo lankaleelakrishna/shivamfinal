@@ -6,7 +6,9 @@
  * definitions below are the source of truth for the server-side validation too.
  */
 
-export type FormTabId = "hire" | "app" | "job";
+import type { IconName } from "@/components/icons/Icon";
+
+export type FormTabId = "hire" | "app" | "job" | "business" | "hirevaani";
 
 export interface FormTab {
   id: FormTabId;
@@ -14,11 +16,26 @@ export interface FormTab {
   submitLabel: string;
 }
 
+export interface FormSide {
+  eyebrow: string;
+  title: string;
+  body: string;
+  ticks: { icon: IconName; text: string }[];
+}
+
 export const FORM_TABS: FormTab[] = [
   { id: "hire", label: "Hire talent", submitLabel: "Send hiring request" },
   { id: "app", label: "Get an app quote", submitLabel: "Request a quote" },
   { id: "job", label: "I am looking for a job", submitLabel: "Share my profile" },
+  { id: "business", label: "Business services", submitLabel: "Send enquiry" },
+  { id: "hirevaani", label: "HireVaani", submitLabel: "Send enquiry" },
 ];
+
+/** Tabs on the home page "Get started" section. */
+export const HOME_FORM_IDS: FormTabId[] = ["hire", "app", "job"];
+
+/** Tabs on the Contact Us page. */
+export const CONTACT_FORM_IDS: FormTabId[] = ["business", "hirevaani"];
 
 interface BaseField {
   id: string;
@@ -91,6 +108,37 @@ export const FORM_FIELDS: Record<FormTabId, FormField[]> = {
     { kind: "select", id: "j-exp", name: "exp", label: "Experience", options: ["Fresher", "1 to 3 years", "3 to 6 years", "6 to 10 years", "10+ years"] },
     { kind: "file", id: "j-resume", name: "resume", label: "Resume", full: true, accept: ".pdf,.doc,.docx" },
   ],
+  business: [
+    { kind: "input", id: "b-company", name: "company", label: "Company name", required: true, autoComplete: "organization" },
+    { kind: "input", id: "b-name", name: "name", label: "Your name", required: true, autoComplete: "name" },
+    { kind: "input", id: "b-email", name: "email", label: "Work email", type: "email", required: true, autoComplete: "email" },
+    { kind: "input", id: "b-phone", name: "phone", label: "Phone", type: "tel", autoComplete: "tel" },
+    {
+      kind: "select",
+      id: "b-service",
+      name: "service",
+      label: "Service of interest",
+      options: [
+        "Web application development",
+        "Mobile application development",
+        "Custom software development",
+        "AI-powered solutions",
+        "UI/UX design",
+        "Digital product development",
+        "Staffing or payroll",
+        "Not sure yet",
+      ],
+    },
+    { kind: "textarea", id: "b-message", name: "message", label: "Message", required: true, full: true, placeholder: "Tell us about your project or requirement" },
+  ],
+  hirevaani: [
+    { kind: "input", id: "v-name", name: "name", label: "Your name", required: true, autoComplete: "name" },
+    { kind: "input", id: "v-email", name: "email", label: "Email", type: "email", required: true, autoComplete: "email" },
+    { kind: "input", id: "v-phone", name: "phone", label: "Phone", type: "tel", autoComplete: "tel" },
+    { kind: "input", id: "v-company", name: "company", label: "Company (optional)", autoComplete: "organization" },
+    { kind: "select", id: "v-app", name: "app", label: "Which HireVaani app", options: ["HireVaani Worker", "HireVaani Recruiter", "Not sure yet"] },
+    { kind: "textarea", id: "v-message", name: "message", label: "Message", required: true, full: true, placeholder: "What do you need help with?" },
+  ],
 };
 
 export const FORM_MESSAGES = {
@@ -101,7 +149,7 @@ export const FORM_MESSAGES = {
   network: "Network problem. Check your connection and try again. Your details are still in the form.",
 } as const;
 
-export const FORM_SIDE = {
+export const FORM_SIDE: FormSide = {
   eyebrow: "Get started",
   title: "Tell us what you need",
   body: "Pick the form that fits. Share as much or as little as you know, and we will come back with questions, not a sales pitch.",
@@ -110,7 +158,18 @@ export const FORM_SIDE = {
     { icon: "phone", text: "Apps: platform, budget range and target timeline" },
     { icon: "file", text: "Job seekers: share your profile and skills" },
   ],
-} as const;
+};
+
+/** Copy for the Contact Us page's enquiry section. */
+export const CONTACT_SIDE: FormSide = {
+  eyebrow: "Contact us",
+  title: "Tell us how we can help",
+  body: "Choose the option that fits. Business enquiries and HireVaani questions both reach our team, and we will come back to you.",
+  ticks: [
+    { icon: "building", text: "Business services: staffing, software, AI and design projects" },
+    { icon: "phone", text: "HireVaani: questions from workers and recruiters using the apps" },
+  ],
+};
 
 /** Returns true when every chosen file matches the input's accept list. */
 export function filesMatchAccept(input: HTMLInputElement): boolean {
