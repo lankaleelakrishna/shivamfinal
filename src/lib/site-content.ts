@@ -119,6 +119,7 @@ export const SERVICES: ContentBlock[] = [
   {
     id: "digital-marketing",
     art: "network",
+    image: "/images/services/digital-marketing.webp",
     title: "Digital Marketing",
     summary:
       "Helping businesses get found and chosen online, with search, social and campaign work planned around clear goals.",
