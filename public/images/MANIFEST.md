@@ -2,28 +2,43 @@
 
 Every image shown on the Sri Shivam Infotech website, where it comes from and the licence that allows its use.
 
-## In use
+## Service photos
+
+The Services page uses the six photos in `public/brand/` (listed below). The WebP copies in `public/images/services/` are kept but no longer referenced.
+
+| File | Used on | Source | Licence |
+|---|---|---|---|
+| `public/brand/01-web-application-development.png` | Services: Web Application Development | Supplied by the company; `public/brand/01-web-application-development.png` | **To be confirmed** |
+| `public/brand/02-mobile-application-development.png` | Services: Mobile Application Development | Supplied by the company; `public/brand/02-mobile-application-development.png` | **To be confirmed** |
+| `public/brand/03-custom-software-development.png` | Services: Custom Software Development | Supplied by the company; `public/brand/03-custom-software-development.png` | **To be confirmed** |
+| `public/brand/04-ai-powered-solutions.png` | Services: AI-Powered Solutions | Supplied by the company; `public/brand/04-ai-powered-solutions.png` | **To be confirmed** |
+| `public/brand/05-ui-ux-design.png` | Services: UI/UX Design | Supplied by the company; `public/brand/05-ui-ux-design.png` | **To be confirmed** |
+| `public/brand/06-digital-product-development.png` | Services: Digital Product Development | Supplied by the company; `public/brand/06-digital-product-development.png` | **To be confirmed** |
+
+Confirm the original source and licence for each file. Photos from Unsplash, Pexels or another stock site need the photographer's name and the photo's page URL. AI-generated images need the tool name and its licence terms.
+
+## Other images in use
 
 | File or source | Used on | Source | Licence |
 |---|---|---|---|
 | `public/brand/logo-mark.png` | Header, footer, favicon, social previews | Company logo, supplied with the project | Company-owned |
-| Site artwork (`src/components/art/Artwork.tsx`) | Home (Explore cards), About, Services, Industries, Clients, Blogs, Contact | Original SVG drawings created for this project. They contain no photographs, text, third-party assets, customer logos or HireVaani app screens. | Project-owned |
+| Site artwork (`src/components/art/Artwork.tsx`) | Home (Explore cards), About, Industries, Clients, Blogs, Contact | Original SVG drawings created for this project. They contain no photographs, text, third-party assets, customer logos or HireVaani app screens. | Project-owned |
+| `public/images/services/*.svg` | Fallback illustrations, not currently shown | Exported from `Artwork.tsx` | Project-owned |
 | Product 3D models (`src/components/three/models/`) | Home and Portfolio product showcase | Built in code for this project | Project-owned |
 
 ### Artwork kinds
 
-- `code`: abstract code window (no real code or UI). Used for Services and the Software blog thumbnail.
-- `device`: two abstract phone outlines with generic blocks (no app screens). Used for the Portfolio teaser and mobile services.
-- `design`: wireframe layout with a drawn curve. Used for UI/UX design and the Blogs hero.
-- `network`: connected nodes. Used for AI solutions, About, and the AI and hiring-trends blog thumbnails.
-- `people`: abstract team figures. Used for Recruitment and Staffing and the Recruitment Technology blog thumbnail.
-- `building`: office blocks. Used for Business and Enterprise, Custom Software and the Contact hero.
-- `bars`: rising bar chart. Used for Digital Product Development, Clients, and the Hiring and HR Trends blog thumbnail.
-- `campus`: campus building. Used for Education and Skill Development.
+- `code`: abstract code window (no real code or UI).
+- `device`: two abstract phone outlines with generic blocks (no app screens).
+- `design`: wireframe layout with a drawn curve.
+- `network`: connected nodes.
+- `people`: abstract team figures.
+- `building`: office blocks.
+- `bars`: rising bar chart.
+- `campus`: campus building.
 
 ## Not yet in use
 
-- **Stock photography (Unsplash or Pexels):** no photographs have been downloaded. Candidate Unsplash photo pages were identified, but Unsplash's site blocks automated access to the pages that confirm each photo's licence, so the image URLs could not be verified. Pexels blocks automated access in the same way. Until a licence-checked photo can be downloaded, the designed artwork above is used instead.
 - **HireVaani Worker and HireVaani Recruiter screenshots:** not supplied. The product screenshot areas stay empty until genuine screenshots are provided. No app screens have been created or recreated.
 - **Client logos and testimonials:** none. The Clients page shows verified in-house products only.
 

@@ -10,6 +10,8 @@ export interface ContentBlock {
   id: string;
   /** Original artwork shown beside the text. */
   art: ArtKind;
+  /** Saved illustration file in public/images. When set, it is shown instead of the inline artwork. */
+  image?: string;
   title: string;
   summary: string;
   points: string[];
@@ -19,6 +21,7 @@ export const SERVICES: ContentBlock[] = [
   {
     id: "web-applications",
     art: "code",
+    image: "/brand/01-web-application-development.png",
     title: "Web Application Development",
     summary:
       "Browser-based products for businesses and teams: dashboards, portals, booking and workflow tools, built to be fast, secure and easy to maintain.",
@@ -32,6 +35,7 @@ export const SERVICES: ContentBlock[] = [
   {
     id: "mobile-applications",
     art: "device",
+    image: "/brand/02-mobile-application-development.png",
     title: "Mobile Application Development",
     summary:
       "Android and iOS apps designed from the first tap: discovery and prototypes first, then build, store release and updates.",
@@ -45,6 +49,7 @@ export const SERVICES: ContentBlock[] = [
   {
     id: "custom-software",
     art: "building",
+    image: "/brand/03-custom-software-development.png",
     title: "Custom Software Development",
     summary:
       "Software built around how your business works, replacing spreadsheets and manual steps with tools your team will actually use.",
@@ -58,6 +63,7 @@ export const SERVICES: ContentBlock[] = [
   {
     id: "ai-solutions",
     art: "network",
+    image: "/brand/04-ai-powered-solutions.png",
     title: "AI-Powered Solutions",
     summary:
       "Practical AI features that save time: screening, matching, voice and language tools, added where they make a measurable difference.",
@@ -71,6 +77,7 @@ export const SERVICES: ContentBlock[] = [
   {
     id: "ui-ux-design",
     art: "design",
+    image: "/brand/05-ui-ux-design.png",
     title: "UI/UX Design",
     summary:
       "Interfaces that are easy to understand and pleasant to use, designed with real users in mind and tested before development starts.",
@@ -84,6 +91,7 @@ export const SERVICES: ContentBlock[] = [
   {
     id: "digital-product-development",
     art: "bars",
+    image: "/brand/06-digital-product-development.png",
     title: "Digital Product Development",
     summary:
       "From idea to working product: scope, design, build, launch and improvement, with one team across the whole journey.",

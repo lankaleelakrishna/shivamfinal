@@ -13,13 +13,14 @@ export const COMPANY = {
 export const ADDRESS = {
   lines: [
     "Sri Shivam Infotech Solutions Pvt. Ltd.",
-    "3rd Floor, Geetanjali, #44/A",
+    "2nd Floor, Geetanjali, #44/A",
     "Opp. Police Station, Sanjeeva Reddy Nagar",
     "Hyderabad, Telangana 500038",
   ],
   mapsUrl:
     "https://www.google.com/maps/search/?api=1&query=" +
-    encodeURIComponent("Sri Shivam Infotech Solutions, 3rd Floor, Geetanjali, #44/A, Opp. Police Station, Sanjeeva Reddy Nagar, Hyderabad, Telangana 500038"),
+    encodeURIComponent("Sri Shivam Infotech Solutions, 2nd Floor, Geetanjali, #44/A, Opp. Police Station, Sanjeeva Reddy Nagar, Hyderabad, Telangana 500038"),
+  phone: { tel: "+919014991928", display: "+91 90149 91928" },
 } as const;
 
 export interface NavLink {
@@ -113,6 +114,14 @@ export interface FooterLink extends NavLink {
   /** Form tab to open on the home page, when the link is a hiring or quote CTA. */
   pick?: FormTabId;
 }
+
+export type SocialIcon = "facebook" | "instagram" | "linkedin";
+
+export const FOOTER_SOCIAL: { href: string; label: string; icon: SocialIcon }[] = [
+  { href: "https://www.facebook.com/share/1E3ZBwzPef/", label: "Facebook", icon: "facebook" },
+  { href: "https://www.instagram.com/hirevaani", label: "Instagram", icon: "instagram" },
+  { href: "https://www.linkedin.com/in/hirevaani-all-jobs-6a6b7944b/", label: "LinkedIn", icon: "linkedin" },
+];
 
 export const FOOTER_CONTACT: FooterLink[] = [
   { href: "/#hire", label: "Hire talent", pick: "hire" },

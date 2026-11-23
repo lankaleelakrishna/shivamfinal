@@ -79,3 +79,19 @@
     gap: 32px;
   }
 }
+
+.phone {
+  margin: 12px 0 0;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.phone a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.phone a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}

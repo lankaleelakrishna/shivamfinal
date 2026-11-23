@@ -73,3 +73,42 @@
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+.social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.social a {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(180, 205, 235, 0.45);
+  border-radius: 50%;
+  color: #e8eff6;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+
+.social a:hover,
+.social a:focus-visible {
+  border-color: #f29a3a;
+  color: #f29a3a;
+  background: rgba(242, 154, 58, 0.08);
+}
+
+/* Higher specificity than the footer's generic list rules, so the icons sit in one row. */
+.brand .social {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.brand .social li {
+  display: block;
+}

@@ -25,6 +25,9 @@ export function Contact() {
                     </span>
                   ))}
                 </address>
+                <p className={styles.phone}>
+                  <a href={`tel:${ADDRESS.phone.tel}`}>{ADDRESS.phone.display}</a>
+                </p>
                 <div className={styles.actions}>
                   <CopyAddressButton text={ADDRESS.lines.join("\n")} />
                   <a className={buttonClass("line")} href={ADDRESS.mapsUrl} target="_blank" rel="noopener noreferrer">

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Artwork } from "@/components/art/Artwork";
 import { Icon } from "@/components/icons/Icon";
 import { FormTabLink } from "@/components/ui/FormTabLink";
@@ -27,7 +28,18 @@ export function TopicList({ items, ctaLabel, ctaHref, ctaPick }: TopicListProps)
         >
           <div className={styles.wrap}>
             <div className={styles.media}>
-              <Artwork kind={item.art} label={`Illustration for ${item.title}`} />
+              {item.image ? (
+                <Image
+                  className={styles.image}
+                  src={item.image}
+                  alt={`${item.title} visual`}
+                  width={497}
+                  height={461}
+                  sizes="(max-width: 880px) 100vw, 50vw"
+                />
+              ) : (
+                <Artwork kind={item.art} label={`Illustration for ${item.title}`} />
+              )}
             </div>
             <div className={styles.text}>
               <p className={styles.index}>{String(idx + 1).padStart(2, "0")}</p>

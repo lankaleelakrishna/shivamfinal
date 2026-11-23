@@ -17,6 +17,10 @@ const nextConfig: NextConfig = {
       { source: "/blogs.html", destination: "/blogs", permanent: true },
       { source: "/contact.html", destination: "/contact", permanent: true },
       { source: "/portfolio.html", destination: "/portfolio", permanent: true },
+      // Old sitelink paths shown in Google results. Best-guess slugs; confirm against Search Console.
+      { source: "/digital-marketing-services", destination: "/services", permanent: true },
+      { source: "/digital-marketing", destination: "/services", permanent: true },
+      { source: "/website-development-portfolio", destination: "/portfolio", permanent: true },
     ];
   },
 };
